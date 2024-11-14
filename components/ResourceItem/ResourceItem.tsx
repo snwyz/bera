@@ -1,12 +1,15 @@
 import React from 'react';
+import clsx from 'clsx';
+
 interface ResourceItemProps {
   title: string;
   level: number;
   coins: number;
   total: number;
+  className?: string;
 }
 
-const ResourceItem: React.FC<ResourceItemProps> = ({ title, level, coins, total }) => {
+const ResourceItem: React.FC<ResourceItemProps> = ({ title, level, coins, total, className }) => {
   const formatNumber = (num: number) => {
     if (num >= 1000) {
       return `${(num / 1000).toFixed(1)}K`;
@@ -15,9 +18,9 @@ const ResourceItem: React.FC<ResourceItemProps> = ({ title, level, coins, total 
   };
 
   return (
-    <div className="flex items-center px-4 rounded-lg height-[2.625rem] justify-between">
+    <div className={clsx('flex items-center px-4 height-[2.625rem] justify-between', className)}>
       {/* Title */}
-      <div className="text-xl font-cherryBomb text-[#F7F9EA] text-stroke-2">
+      <div className="text-[26px] font-cherryBomb text-[#F7F9EA] text-stroke-2">
         {title}
       </div>
       <div className="flex items-center gap-2">
